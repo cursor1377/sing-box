@@ -18,4 +18,4 @@ endpoints:
     # +optional Network level visibilities of the endpoint.
     # Accepted values: Project|Organization|Public(Default).
     networkVisibilities:
-      - Public # 或 Organization, Project
+      - Project # 或 Organization, Project
