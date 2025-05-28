@@ -1,0 +1,21 @@
+# schemaVersion: 1.2 # 根据 Choreo 最新文档确认版本
+schemaVersion: 1.2
+
+# +optional Incoming connection details for the component
+endpoints:
+  # +required Unique name for the endpoint.
+  - name: singbox-proxy-tcp # 例如：singbox-proxy-tcp 或 singbox-socks
+    # +optional Display name for the endpoint.
+    displayName: Sing-Box TCP Proxy
+    # +required Service section has the user service endpoint details
+    service:
+      # +required Numeric port value that gets exposed via the endpoint
+      # 这必须与 Dockerfile 中的 EXPOSE 和 sing-box 内部监听的端口一致
+      port: 8080 # 或者您的 sing-box 实际监听的端口，如 1080 (SOCKS) 等
+    # +required Type of traffic that the endpoint is accepting.
+    # Allowed values: REST, GraphQL, GRPC, TCP, UDP.
+    type: TCP # 如果是 SOCKS 代理, HTTP 代理等，通常是 TCP
+    # +optional Network level visibilities of the endpoint.
+    # Accepted values: Project|Organization|Public(Default).
+    networkVisibilities:
+      - Public # 或 Organization, Project
